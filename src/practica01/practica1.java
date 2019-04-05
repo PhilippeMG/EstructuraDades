@@ -9,8 +9,9 @@ import java.util.Set;
 public class practica1 {
 
     /**
-     *  Método que toma dos conjuntos de enteros y separa los elementos entre aquellos que sólo aparecen una vez
-     *  y aquellos que aparecen repetidos. El método modifica los conjuntos que toma como parámetros.
+     * Método que toma dos conjuntos de enteros y separa los elementos entre aquellos que sólo aparecen una vez
+     * y aquellos que aparecen repetidos. El método modifica los conjuntos que toma como parámetros.
+     *
      * @param unicos    A la entrada un conjunto de enteros. A la sálida los elementos que solo aparecen en uno de
      *                  los conjuntos.
      * @param repetidos A la entrada un conjunto de enteros. A la salida los elementos que aparecen en ambos conjuntos.
@@ -18,66 +19,56 @@ public class practica1 {
     static public void separa(Set<String> unicos, Set<String> repetidos) {
         // TODO
 
-            Set<String> conjunto = new HashSet<>();
-            conjunto.addAll(unicos);
-            conjunto.retainAll(repetidos);
-            unicos.addAll(repetidos);
-            unicos.removeAll(conjunto);
-            repetidos.removeAll(unicos);
+        Set<String> conjunto = new HashSet<>();
+        conjunto.addAll(unicos);
+        conjunto.retainAll(repetidos);
+        unicos.addAll(repetidos);
+        unicos.removeAll(conjunto);
+        repetidos.removeAll(unicos);
 
 
     }
 
 
     /**
-     *  Toma un iterador a una colección de enteros positivos y devuelve como resultado un conjunto con aquellos elementos
-     *  de la colección que no son múltiplos de algún otro de la colección. Los ceros son descartados
-     * @param iter  Iterador a una colección de enteros
+     * Toma un iterador a una colección de enteros positivos y devuelve como resultado un conjunto con aquellos elementos
+     * de la colección que no son múltiplos de algún otro de la colección. Los ceros son descartados
+     *
+     * @param iter Iterador a una colección de enteros
      * @return Conjunto de de enteros.
      */
-    static public Set <Integer> filtra(Iterator<Integer> iter) {
+    static public Set<Integer> filtra(Iterator<Integer> iter) {
         //TODO
-        return null;
-      /*  Set<Integer> devolver = new HashSet<Integer>();
-
-        boolean añadir = false;
+        Set<Integer> devolver = new HashSet<Integer>();
         while (iter.hasNext()) {
-            añadir = false;
-            int a = iter.next();
-            if (a > 0) {
-                Iterator<Integer> iter2 = devolver.iterator();
-                if (devolver.isEmpty()) {
-                    devolver.add(a);
+            Integer valor = iter.next();
+            if (valor > 0) {
+                if (devolver.isEmpty())
+                    devolver.add(valor);
+                else {
+                    Iterator<Integer> iter2 = devolver.iterator();
+                    boolean añadir = false;
+                    Set<Integer> borrar = new HashSet<Integer>();
+
+                    for (Integer elemento : devolver) {
+                        if (valor % elemento != 0) añadir = true;
+
+                        if (elemento != valor && elemento % valor == 0) borrar.add(elemento);
+
+                    }
+                    if (añadir) devolver.add(valor);
+                    devolver.removeAll(borrar);
                 }
-
-                while (iter2.hasNext()) {
-                    int b = (int) iter2.next();
-
-                    if (a % b != 0) {
-                        añadir = true;
-                    }
-
-                    if (a % b == 0) {
-                        añadir = false;
-                    }
-                    if (b != a && b % a == 0) {
-                        iter2.remove();
-                    }
-
-                }
-
             }
-            if (añadir)
-                devolver.add(a);
-
         }
+        return devolver;
 
-        return devolver;*/
     }
 
     /**
      * Toma una colección de conjuntos de <i>String</i> y devuelve como resultado un conjunto con aquellos <i>String </i>
      * Que aparecen en al menos dos conjuntos de la colección.
+     *
      * @param col Coleccion de conjuntos de <i>String</i>
      * @return Conjunto de <i>String</i> repetidos.
      */
@@ -110,5 +101,5 @@ public class practica1 {
             }
         }
         return devolver;*/
-        }
+    }
 }
