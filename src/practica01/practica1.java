@@ -2,6 +2,7 @@ package practica01;
 
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -16,7 +17,17 @@ public class practica1 {
      */
     static public void separa(Set<String> unicos, Set<String> repetidos) {
         // TODO
+
+            Set<String> conjunto = new HashSet<>();
+            conjunto.addAll(unicos);
+            conjunto.retainAll(repetidos);
+            unicos.addAll(repetidos);
+            unicos.removeAll(conjunto);
+            repetidos.removeAll(unicos);
+
+
     }
+
 
     /**
      *  Toma un iterador a una colección de enteros positivos y devuelve como resultado un conjunto con aquellos elementos
@@ -27,6 +38,41 @@ public class practica1 {
     static public Set <Integer> filtra(Iterator<Integer> iter) {
         //TODO
         return null;
+      /*  Set<Integer> devolver = new HashSet<Integer>();
+
+        boolean añadir = false;
+        while (iter.hasNext()) {
+            añadir = false;
+            int a = iter.next();
+            if (a > 0) {
+                Iterator<Integer> iter2 = devolver.iterator();
+                if (devolver.isEmpty()) {
+                    devolver.add(a);
+                }
+
+                while (iter2.hasNext()) {
+                    int b = (int) iter2.next();
+
+                    if (a % b != 0) {
+                        añadir = true;
+                    }
+
+                    if (a % b == 0) {
+                        añadir = false;
+                    }
+                    if (b != a && b % a == 0) {
+                        iter2.remove();
+                    }
+
+                }
+
+            }
+            if (añadir)
+                devolver.add(a);
+
+        }
+
+        return devolver;*/
     }
 
     /**
@@ -38,5 +84,31 @@ public class practica1 {
     static public Set<String> repetidos(Collection<Set<String>> col) {
         // TODO
         return null;
-    }
+      /*  Set<String> devolver = new HashSet<String>();
+        Set<String> aux = new HashSet<String>();
+
+        Iterator<Set<String>> iter = col.iterator();
+
+        while (iter.hasNext()) {
+
+            Set<String> a = iter.next();
+            if (aux.isEmpty()) {
+                aux.addAll(a);
+            } else {
+
+                Iterator<String> iter2 = a.iterator();
+                while (iter2.hasNext()) {
+
+                    String element = iter2.next();
+                    if (aux.contains(element)) {
+                        devolver.add(element);
+                    }
+
+                }
+                aux.addAll(a);
+
+            }
+        }
+        return devolver;*/
+        }
 }

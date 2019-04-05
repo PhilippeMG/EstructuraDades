@@ -111,44 +111,43 @@ public class practica1Test {
             }
 
     }
-    @org.junit.Test
 
-    private Collection<Set<String>> preparaRepetidosCaso(int conjuntos, int repetidos, int nelementos, Set<String> esperado) {
-        List<Set<String>> caso = new ArrayList<>();
-        esperado.clear();
+   public Collection<Set<String>> preparaRepetidosCaso(int conjuntos, int repetidos, int nelementos, Set<String> esperado) {
+          List<Set<String>> caso = new ArrayList<>();
+          esperado.clear();
 
-        for (int i = 0; i < conjuntos; i++)
-            caso.add(new HashSet<String>());
+          for (int i = 0; i < conjuntos; i++)
+              caso.add(new HashSet<String>());
 
-        if (conjuntos > 2) {
-            int c = 0;
-            for (int i = 0; i < repetidos; i++) {
-                String rep = String.valueOf(i+2);
-                int j = i+2;
-                while (j > 0) {
-                    caso.get(c).add(rep);
-                    j--;
-                    c = (c + 1) % caso.size();
-                }
-                esperado.add(rep);
-            }
-        }
+          if (conjuntos > 2) {
+              int c = 0;
+              for (int i = 0; i < repetidos; i++) {
+                  String rep = String.valueOf(i+2);
+                  int j = i+2;
+                  while (j > 0) {
+                      caso.get(c).add(rep);
+                      j--;
+                      c = (c + 1) % caso.size();
+                  }
+                  esperado.add(rep);
+              }
+          }
 
-        int aux = repetidos + 10;
-        for(Set<String> s: caso) {
-            for (int i = 0; i < nelementos; i++, aux++)
-                s.add(String.valueOf(aux));
-        }
+          int aux = repetidos + 10;
+          for(Set<String> s: caso) {
+              for (int i = 0; i < nelementos; i++, aux++)
+                  s.add(String.valueOf(aux));
+          }
 
-        return caso;
-    }
+          return caso;
+      }
 
     private int[][] cRepetidosCasos =
             { {0, 0, 0}, {1, 0, 1}, {3, 0, 0}, {3, 1, 0}, {3, 1, 3},
                     {3, 2, 0}, {3, 2, 3}, {3, 3, 3}, {5, 1, 0}, {5, 2, 2},
                     {5, 3, 1}, {5, 5, 4}};
 
-    @org.junit.Test
+  @org.junit.Test
     public void repetidosTest() {
         Collection<Set<String>> caso;
         Set<String> esperado = new HashSet<>();
