@@ -39,16 +39,15 @@ public class practica1 {
      */
     static public Set<Integer> filtra(Iterator<Integer> iter) {
         //TODO
-        Set<Integer> devolver = new HashSet<Integer>();
+        Set<Integer> devolver = new HashSet<>();
         while (iter.hasNext()) {
             Integer valor = iter.next();
             if (valor > 0) {
                 if (devolver.isEmpty())
                     devolver.add(valor);
                 else {
-                    Iterator<Integer> iter2 = devolver.iterator();
                     boolean añadir = false;
-                    Set<Integer> borrar = new HashSet<Integer>();
+                    Set<Integer> borrar = new HashSet<>();
 
                     for (Integer elemento : devolver) {
                         if (valor % elemento != 0) añadir = true;
@@ -74,32 +73,21 @@ public class practica1 {
      */
     static public Set<String> repetidos(Collection<Set<String>> col) {
         // TODO
-        return null;
-      /*  Set<String> devolver = new HashSet<String>();
+        Set<String> devolver = new HashSet<String>();
         Set<String> aux = new HashSet<String>();
-
-        Iterator<Set<String>> iter = col.iterator();
-
-        while (iter.hasNext()) {
-
-            Set<String> a = iter.next();
-            if (aux.isEmpty()) {
-                aux.addAll(a);
-            } else {
-
-                Iterator<String> iter2 = a.iterator();
-                while (iter2.hasNext()) {
-
-                    String element = iter2.next();
-                    if (aux.contains(element)) {
-                        devolver.add(element);
-                    }
-
+        for(Set<String>coleccion:col){
+            for(String elemento:coleccion){
+                if(aux.isEmpty())
+                    aux.add(elemento);
+                else{
+                    System.out.print(aux.contains(elemento));
+                    if(aux.contains(elemento))devolver.add(elemento);
+                    else aux.add(elemento);
                 }
-                aux.addAll(a);
 
             }
+
         }
-        return devolver;*/
+        return devolver;
     }
 }
