@@ -60,7 +60,22 @@ public class practica2 {
      */
     static public List<Integer> ordenar(List<Integer> l) {
         //TODO completa la implmentación
-        return null;
+        List<Integer>ordenada=new LinkedList<>();
+        for(Integer element: l){
+            if(ordenada.isEmpty()) ordenada.add(element);
+            else{
+                boolean modificat =false;
+                for(int i=0;i<ordenada.size();i++){
+                    if(element<=ordenada.get(i)){
+                        ordenada.add(i,element);
+                        modificat =true;
+                        break;
+                    }
+                }
+                if (!modificat)ordenada.add(element);
+            }
+        }
+        return ordenada;
     }
 
 }
