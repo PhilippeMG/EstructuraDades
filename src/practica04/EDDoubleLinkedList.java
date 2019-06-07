@@ -65,71 +65,19 @@ public class EDDoubleLinkedList<T> implements List<T> {
      */
     public void shuffle(List<T> lista) {
         // TODO Implmentar para la práctica
-      /*  if( lista==null || lista.size()==0) return;
-        if(size==0){
-            Node node=first=new Node(lista.get(0));
-            for(int i=1;i<lista.size();i++){
-                T dato=lista.get(i);
-                Node aux=new Node(dato);
-                node.next=aux;
-                aux.prev=node;
-                last=aux;
-            }
-        }else
-        if(size==1){
-            Node node=first,aux;
-            for(int i=0;i<lista.size();i++){
-                T dato=lista.get(i);
-                aux=new Node(dato);
-                node.next=aux;
-                aux.prev=node;
-                last=aux;
-                node=aux;
-            }
-        }else{
-            Node node=first,aux=null;
-            int i=0;
-            for( i=0;i<lista.size();i++){
 
-                T dato=lista.get(i);
-                aux=new Node(dato);
-                aux.prev=node;
-                aux.next=node.next;
-
-                node.next=aux;
-
-                last=aux;
-                //node=node
-                if(node.next==null)break;
-            }
-            System.out.println("entra");
-            System.out.println("i<lista.size() "+i+" "+(lista.size()+" "+(i<lista.size())));
-            if(i<lista.size()){
-                System.out.println("if");
-                for( int j=i;j<lista.size();j++){
-                    System.out.println("entra");
-                    T dato=lista.get(i);
-                    aux=new Node(dato);
-                    node.next=aux;
-                    aux.prev=node;
-
-                    node=aux;
-                }
-                last=aux;
-                }
-        }
-        size+=lista.size();
-*/
-        if (lista.isEmpty() && first == null || lista.isEmpty())
+        if (lista.isEmpty() && first == null )
             return;
+
         if (first == null) {
             if (!lista.isEmpty()) {
                 Node n = first;
-                for (int i = 0; i < lista.size(); i++) {
-                    Node aux = new Node(lista.get(i));
-                    if (first == null) {
+                //for (int i = 0; i < lista.size(); i++) {
+                for(T dades : lista){
+                    Node aux = new Node(dades);
+                    if (first == null)
                         first = aux;
-                    } else {
+                    else {
                         aux.prev = n;
                         n.next = aux;
                     }
@@ -146,21 +94,18 @@ public class EDDoubleLinkedList<T> implements List<T> {
 
             while (n.next != null && lista.size() != 0) {
 
-                Node nuevo = new Node(lista.get(0));
-                lista.remove(0);
-
+                Node nuevo = new Node(lista.remove(0));
                 aux = n.next;
-                n.next = nuevo;
                 nuevo.prev = n;
                 nuevo.next = aux;
+                n.next = nuevo;
                 aux.prev = nuevo;
                 n = aux;
                 //last = n;
             }
 
             while(lista.size() != 0) {
-                Node nuevo = new Node(lista.get(0));
-                lista.remove(0);
+                Node nuevo = new Node(lista.remove(0));
                 last.next = nuevo;
                 nuevo.prev = last;
                 last = nuevo;
