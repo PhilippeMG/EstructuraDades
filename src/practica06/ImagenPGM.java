@@ -44,6 +44,11 @@ public class ImagenPGM {
 
     public void cuadrar () {
         // TODO Ejercicio 2
+        if(altura<anchura){
+            anchura=altura;
+        }else{
+            altura=anchura;
+        }
     }
 
     @Override
